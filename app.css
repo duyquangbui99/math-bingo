@@ -1,199 +1,212 @@
 /*======= Variables CSS =======*/
 :root {
-    --background-color: #274653;
-    --title-color: #e9c46a;
-    --input-color: #299d8f;
-    --submit-color: #e76f51;
-    --cell-color: #41455d;
-    --white-color: rgb(255, 255, 255);
+  --background-color: #274653;
+  --title-color: #e9c46a;
+  --input-color: #299d8f;
+  --submit-color: #e76f51;
+  --cell-color: #41455d;
+  --white-color: rgb(255, 255, 255);
 
-    --bingo-color: #e76f51;
-    --youwon-color: #e9c46a;
-    --newgame-color: #00b4d8;
+  --bingo-color: #e76f51;
+  --youwon-color: #e9c46a;
+  --newgame-color: #00b4d8;
 
-    --marked-cell: #19C18F;
+  --marked-cell: #19c18f;
 }
 
 /*======= BASE =======*/
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
-    background-color: var(--background-color);
-    font-family: 'JetBrains Mono';
+  background-color: var(--background-color);
+  font-family: "JetBrains Mono";
+  position: relative;
 }
 
 table {
-    margin-top: 20px;
-    border-collapse: collapse;
+  margin-top: 20px;
+  border-collapse: collapse;
 }
 
 td {
-    border: 1px solid black;
-    width: 120px;
-    height: 120px;
-    text-align: center;
-    font-size: 3rem;
-    background-color: var(--cell-color);
-    color: var(--white-color)
+  border: 1px solid black;
+  width: 120px;
+  height: 120px;
+  text-align: center;
+  font-size: 3rem;
+  background-color: var(--cell-color);
+  color: var(--white-color);
 }
 
 /*======= APP =======*/
 .game-screen {
-    height: 100vh;
-    position: relative;
+  height: 100vh;
+  position: relative;
 }
 
 .flex {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .title {
-    color: var(--title-color);
-    font-size: 3.5rem;
+  font-family: "Jockey One";
+  color: var(--title-color);
+  font-size: 3.5rem;
 }
-
 
 #question {
-    color: var(--white-color);
-    font-size: 2rem;
+  color: var(--white-color);
+  font-size: 2rem;
 }
-
-.inputField {
-    background-color: var(--input-color);
-    color: var(--white-color);
-    border: none;
-    border-radius: 2px;
-    padding: 5px 10px;
-    text-align: center;
-    width: 200px;
-}
-
-.inputField::placeholder {
-    color: var(--white-color);
-    opacity: 0.5;
-}
-
-.guess-answer-btns {
-    width: 400px;
-
+.buttons-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  gap: 0.5rem;
 }
 
 #submit,
 #newgame,
 #play,
 .guess-btn {
-    background-color: var(--submit-color);
-    border: none;
-    border-radius: 2px;
-    padding: 5px 10px;
-    width: 150px;
-    cursor: pointer;
+  background-color: var(--submit-color);
+  border: none;
+  border-radius: 2px;
+  padding: 5px 10px;
+  width: 150px;
+  cursor: pointer;
 }
 
 #newgame,
 #play,
 .guess-btn {
-    background-color: var(--newgame-color);
-    color: var(--white-color);
-    font-size: 1.4rem;
-    width: 200px;
-    border-radius: 5px;
-    margin-top: 20px;
+  background-color: var(--newgame-color);
+  color: var(--white-color);
+  font-size: 1.4rem;
+  width: 200px;
+  border-radius: 5px;
+  margin-top: 20px;
 }
 
 .guess-btn {
-    background-color: var(--input-color);
-    width: 100px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  background-color: var(--input-color);
+  width: 120px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .guess-btn:hover {
-    background-color: #ffb706;
+  background-color: #ffb706;
+}
+
+.guess-btn:active {
+  background-color: var(--bingo-color);
 }
 
 .gap {
-    gap: 15px;
+  gap: 15px;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
-
-.top-buttons,
-.bottom-buttons {}
 
 /*-- BINGO --*/
 .bingo {
-    position: absolute;
-    width: 400px;
-    height: 210px;
-    background-color: #299d8f;
-    border-radius: 20px;
-    z-index: 1;
+  position: absolute;
+  width: 400px;
+  height: 210px;
+  background-color: #299d8f;
+  border-radius: 20px;
+  z-index: 1;
 }
 
 .bingo .title {
-    color: var(--bingo-color);
-    font-size: 3.5rem;
+  color: var(--bingo-color);
+  font-size: 3.5rem;
 }
 
 .bingo h2 {
-    color: var(--youwon-color);
+  color: var(--youwon-color);
 }
 
-
 .bold {
-    font-size: 2.5rem;
+  font-size: 2.5rem;
 }
 
 .marked {
-    background-color: var(--marked-cell);
+  background-color: var(--marked-cell);
 }
 
 /*======= Loading =======*/
 .loading {
-    height: 100vh;
+  height: 100vh;
 }
 
 .loading h2 {
-    color: #19C18F;
+  color: #19c18f;
 }
 
 #play {
-    background-color: #e76f51;
+  background-color: #e76f51;
 }
 
 /*======= Responsive =======*/
 @media (max-width: 400px) {
-    td {
-        width: 100px;
-        height: 100px;
-    }
+  td {
+    width: 100px;
+    height: 100px;
+  }
 
-    .loading h2 {
-        font-size: 1.3rem;
-    }
-
+  .loading h2 {
+    font-size: 1.3rem;
+  }
 }
 
 @media (max-width: 340px) {
-    .title {
-        font-size: 3rem;
-    }
+  .title {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Adjust styles for smaller screens */
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  body {
+    position: relative;
+  }
+
+  .flex-container {
+    padding: 1rem;
+  }
+
+  table {
+    border-collapse: collapse;
+    border: none;
+    border-color: none;
+    font-family: "JetBrains Mono";
+    color: #fff;
+    font-size: 55px;
+  }
 }
