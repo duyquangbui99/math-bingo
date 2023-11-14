@@ -12,6 +12,9 @@
 </head>
 
 <body>
+    <div class="firework"></div>
+    <div class="firework"></div>
+    <div class="firework"></div>
     <div class="app">
         <div class="loading flex">
             <h1 class="title">MATH BINGO</h1>
@@ -20,24 +23,28 @@
         </div>
         <div class="game-screen flex hidden">
             <div class="flex gap">
-                <div class="bingo flex hidden">
-                    <h1 class="title">BINGO!</h1>
-                    <h2 class="bold">You've won!</h2>
-                    <button id="newgame">New Game</button>
-                </div>
                 <div class="flex gap">
                     <h1 class="title">MATH BINGO</h1>
                     <p id="question"></p>
                     <div class="guess-answer-btns flex">
                         <div class="buttons-container">
-                            <button class="guess-btn" id="answer">1</button>
-                            <button class="guess-btn" id="answer">2</button>
-                            <button class="guess-btn" id="answer">1</button>
-                            <button class="guess-btn" id="answer">2</button>
+                            <button class="guess-btn" id="answer"></button>
+                            <button class="guess-btn" id="answer"></button>
+                            <button class="guess-btn" id="answer"></button>
+                            <button class="guess-btn" id="answer"></button>
                         </div>
                     </div>
                     <!-- <input class="inputField" type="text" id="answer" placeholder="enter your answer"> -->
                     <!-- <button id="submit">SUBMIT</button> -->
+                </div>
+                <div id="win-message" class="hidden">
+                    <h1 class="title">BINGO!</h1>
+                    <h2 class="bold">You've won!</h2>
+                    <button id="newgame" onclick="newGame()">New Game</button>
+                </div>
+                <div id="lose-message" class="hidden">
+                    <span class="message">You enter a wrong answer!</span><br />
+                    <button id="newgame" onclick="newGame()">new game</button>
                 </div>
             </div>
             <table>
