@@ -18,6 +18,9 @@ const buttons = document.querySelectorAll(".guess-btn");
 let num1, num2, answer; //set this variables to be global
 let markedCells = new Set();
 let gameEnded = false;
+const timerElement = document.querySelector('.timer');
+const timerDuration = 5000; //set timer to be 10s
+const transitionDuration = 5000; //transition duration and timer duaration need to be equal
 // const targetNumber = [...usedNumbers][
 //   Math.floor(Math.random() * usedNumbers.size)
 // ];
@@ -191,21 +194,34 @@ function checkForBingo() {
   if (
     cells[0].classList.contains("marked") &&
     cells[0].classList.contains("marked") ===
-      cells[4].classList.contains("marked") &&
+    cells[4].classList.contains("marked") &&
     cells[0].classList.contains("marked") ===
-      cells[8].classList.contains("marked")
+    cells[8].classList.contains("marked")
   ) {
     return true;
   }
   if (
     cells[2].classList.contains("marked") &&
     cells[2].classList.contains("marked") ===
-      cells[4].classList.contains("marked") &&
+    cells[4].classList.contains("marked") &&
     cells[2].classList.contains("marked") ===
-      cells[6].classList.contains("marked")
+    cells[6].classList.contains("marked")
   ) {
     return true;
   }
+}
+
+
+function startTimer(duration, transitionDuration) {
+  // Set the initial position
+  timerElement.style.transform = 'translateX(0)';
+  timerElement.style.transition = `transform ${transitionDuration}ms linear`;
+  timerElement.style.transform = `translateX(-${timerElement.offsetWidth}px)`;
+  setTimeout(() => {
+    timerElement.style.transform = 'translateX(0)'; //set the timer back
+    timerElement.style.transition = `transform 0ms linear`;
+    endGame(gameEnded);
+  }, duration);
 }
 
 //Functon to handle click
@@ -215,6 +231,7 @@ function newGame() {
   generateRandomNumbers();
   generateNextQuestion(generateUniqueAnswer());
   generateButtonsHTML();
+  startTimer(timerDuration, transitionDuration);
 }
 
 function endGame(condition) {
@@ -250,6 +267,7 @@ function displayBingo() {
 function loadGameScreen() {
   loadingScreen.classList.add("hidden");
   gameScreen.classList.remove("hidden");
+  startTimer(timerDuration, transitionDuration);
 }
 
 playBtn.addEventListener("click", loadGameScreen);
@@ -267,3 +285,5 @@ buttons.forEach(function (button) {
 generateRandomNumbers();
 generateNextQuestion(generateUniqueAnswer());
 generateButtonsHTML();
+
+
