@@ -19,8 +19,8 @@ let num1, num2, answer; //set this variables to be global
 let markedCells = new Set();
 let gameEnded = false;
 const timerElement = document.querySelector('.timer');
-const timerDuration = 5000; //set timer to be 10s
-const transitionDuration = 5000; //transition duration and timer duaration need to be equal
+const timerDuration = 7000; //set timer to be 10s
+//const transitionDuration = 5000; //transition duration and timer duaration need to be equal
 // const targetNumber = [...usedNumbers][
 //   Math.floor(Math.random() * usedNumbers.size)
 // ];
@@ -231,7 +231,8 @@ function newGame() {
   generateRandomNumbers();
   generateNextQuestion(generateUniqueAnswer());
   generateButtonsHTML();
-  startTimer(timerDuration, transitionDuration);
+  startTimer(timerDuration, timerDuration
+  );
 }
 
 function endGame(condition) {
@@ -267,7 +268,7 @@ function displayBingo() {
 function loadGameScreen() {
   loadingScreen.classList.add("hidden");
   gameScreen.classList.remove("hidden");
-  startTimer(timerDuration, transitionDuration);
+  startTimer(timerDuration, timerDuration);
 }
 
 playBtn.addEventListener("click", loadGameScreen);
